@@ -17,4 +17,3 @@ make -j2
 For another MOOSE location, set `MOOSE_DIR=/absolute/path/to/moose` before building
 and running tests. Only `POROUS_FLOW := yes` is enabled explicitly; MOOSE selects its
 module dependencies. The tested dependency revision is in `MOOSE_REVISION`.
-The checkout helper retrieves that exact revision from `cpgr/moose`.
