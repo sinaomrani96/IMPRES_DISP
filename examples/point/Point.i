@@ -2,10 +2,10 @@
   [gen]
   type = GeneratedMeshGenerator
   dim = 2
-  nx = 600
-  ny = 600
-  xmax = 0.06
-  ymax = 0.06
+  nx = 1200
+  ny = 400
+  xmax = 0.12
+  ymax = 0.04
   []
 []
 
