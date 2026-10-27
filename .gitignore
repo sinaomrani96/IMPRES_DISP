@@ -346,3 +346,12 @@ binaryoutput
 # Nsight Systems profiling output
 *.nsys-rep
 *.sqlite
+
+/moose/
+*.e
+*.e-s*
+*.csv
+*.log
+.jitcache/
+__pycache__/
+!/doc/class_names.json

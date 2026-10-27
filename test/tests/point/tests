@@ -1,0 +1,29 @@
+[Tests]
+  [point_setup]
+    type = RunApp
+    input = point_smoke.i
+    cli_args = '--check-input'
+    expect_out = 'Syntax OK'
+    requirement = 'IMPRES_DISP shall construct the Point model using only its selected custom objects and PorousFlow.'
+  []
+  [point_transient]
+    type = RunApp
+    input = point_smoke.i
+    cli_args = 'Outputs/file_base=point_transient'
+    expect_out = 'Solve Converged!'
+    requirement = 'IMPRES_DISP shall advance the coupled pressure and tracer Point model with heterogeneous file-based porosity and permeability.'
+  []
+  [point_dispersion]
+    type = RunApp
+    input = point_smoke.i
+    cli_args = 'Outputs/file_base=point_dispersion Materials/disp_long/expression=0.001 Materials/disp_trans/expression=0.0001'
+    expect_out = 'Solve Converged!'
+    requirement = 'IMPRES_DISP shall converge the Point model with nonzero longitudinal and transverse mechanical dispersion.'
+  []
+  [field_values_and_mass]
+    type = RunCommand
+    command = 'python3 check_point.py'
+    prereq = 'point_transient point_dispersion'
+    requirement = 'IMPRES_DISP shall recover the heterogeneous field averages and conserve total component mass in the short Point runs.'
+  []
+[]
