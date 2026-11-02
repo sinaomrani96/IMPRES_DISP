@@ -8,7 +8,7 @@ then run:
 
 ```bash
 conda env create -f environment.yml  # once; reuse an existing matching environment if present
-conda activate moose
+conda activate moose-next
 ./scripts/checkout_moose.sh          # optional if a compatible ../moose already exists
 make -j2
 ./run_tests -j2
@@ -16,4 +16,6 @@ make -j2
 
 For another MOOSE location, set `MOOSE_DIR=/absolute/path/to/moose` before building
 and running tests. Only `POROUS_FLOW := yes` is enabled explicitly; MOOSE selects its
-module dependencies.
+module dependencies. The tested dependency revision is in `MOOSE_REVISION`.
+The checkout helper retrieves that exact revision from the official
+`idaholab/moose` repository. The pin is a tested snapshot of its `next` branch.

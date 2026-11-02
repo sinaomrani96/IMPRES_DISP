@@ -4,6 +4,8 @@
 [Mesh/gen]
   nx := 8
   ny := 8
+  xmax := 0.06
+  ymax := 0.06
 []
 
 [Executioner]

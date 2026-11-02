@@ -9,7 +9,7 @@ if [[ -e "$moose_path" ]]; then
 fi
 revision=$(tr -d '\r\n' < "$app_dir/MOOSE_REVISION")
 git init "$moose_path"
-git -C "$moose_path" remote add origin https://github.com/cpgr/moose.git
+git -C "$moose_path" remote add origin https://github.com/idaholab/moose.git
 git -C "$moose_path" fetch --depth 1 origin "$revision"
 git -C "$moose_path" checkout --detach FETCH_HEAD
 printf 'Pinned MOOSE checkout: %s\n' "$moose_path"

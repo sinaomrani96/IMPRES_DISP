@@ -1,6 +1,6 @@
-name: moose
+name: moose-next
 channels:
   - https://conda.software.inl.gov/public
   - conda-forge
 dependencies:
-  - moose-dev=2026.06.16=mpich
+  - moose-dev=2026.10.19=mpich

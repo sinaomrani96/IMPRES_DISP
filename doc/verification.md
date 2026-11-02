@@ -1,10 +1,12 @@
-# Verification: 27 October 2026
+# Verification: 2 November 2026
 
-The application compiled with `make -j2` using the environment in `environment.yml`
-and the MOOSE revision in `MOOSE_REVISION`. It was compiled against the clean
-PorousFlow and FluidProperties source snapshots prepared for the previous migration.
-Dynamic linkage was checked: clean module libraries are used, and no IMPRES_KIN
-library is linked. No compiler warnings or errors were reported for this build.
+The application compiled with `make -j2` against official `idaholab/moose`
+revision `9e3f8b1b61b71b867d87edc071300d38794106f7`, a `next` snapshot dated
+2 November 2026. That source requires `moose-dev=2026.10.19=mpich`, recorded in
+`environment.yml`. The compatibility build used the exact pinned libMesh revision
+`342ad76b0c867273316a8a00f8e583810ece759e`. Framework, FluidProperties,
+PorousFlow, all custom application sources, the test library, and
+`impres_disp-opt` compiled and linked successfully. No IMPRES_KIN library is linked.
 
 `./run_tests -j2` passed all four focused tests, with no skips or failures:
 
@@ -19,11 +21,11 @@ averaging `0.25`. Both short runs recover those averages, density `1000 kg/m^3`,
 and total component mass `0.9` for this 2D unit-depth domain, at times 0.1 and 0.2.
 C++ formatting and staged whitespace checks passed.
 
-The supplied production `Point.i` retains its 600x600 mesh and final time 2381.
-It was migrated by replacing only the custom type names and whitespace; numerical
-settings were not changed. Production permeability and porosity files are external
-user inputs and are intentionally not included. The production-scale transient was
-not run. Small synthetic fixtures are confined to the regression test directory.
+The production `Point.i` uses a 1200x400 mesh over 0.12x0.04 m and final time
+2381. The uploaded production `perm.txt` and `poro.txt` are included, and
+`Point.i --check-input` reports `Syntax OK`. The production-scale transient was
+not run. The 8x8 smoke input explicitly uses its separate 0.06x0.06 m synthetic
+domain and fixtures.
 
 Only nine custom source/header pairs were migrated, preserving their numerical
 implementations and replacing `My...` / `ImpresKin...` names with `ImpresDisp...`.
