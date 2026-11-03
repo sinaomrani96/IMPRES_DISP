@@ -19,3 +19,5 @@ and running tests. Only `POROUS_FLOW := yes` is enabled explicitly; MOOSE select
 module dependencies. The tested dependency revision is in `MOOSE_REVISION`.
 The checkout helper retrieves that exact revision from the official
 `idaholab/moose` repository. The pin is a tested snapshot of its `next` branch.
+
+co-authered by codex.
